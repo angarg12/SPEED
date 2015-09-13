@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/speed.js"></script>
+<html>
+<body ng-app="incremental">
+    <div ng-controller="IncCtrl">
+         <h1>SPEED</h1>
+
+         <h2>Goal {{goals+1}}: {{goal}}</h2>
+
+         <h2>Maximum goal {{maximumGoal}}</h2>
+
+         <h2>Countdown: {{time}}</h2>
+
+         <h2 ng-if="wastedMessage">WASTED!!</h2>
+
+         <h2 ng-if="!wastedMessage"><button ng-click="resetRun()">Restart</button></h2>
+
+        <hr>
+        <button ng-click="click()">Money +{{1+clickUpgrades}}</button>
+        <p>Cash: ${{money.toFixed(2)}}</p>
+        <p>At this rate you will make... <font color="green">${{prediction.toFixed(2)}}</font>
+        </p>
+        <p>Adrenaline: {{adrenaline}}</p>
+        <button ng-click="buyGenerator()" ng-disabled="money < generatorPrice()">Buy a generator (cost ${{generatorPrice()}})</button>{{generators}}
+        <br>
+        <button ng-click="buyUpgrade()" ng-disabled="adrenaline < upgradePrice()">Upgrade generators (cost {{upgradePrice()}} adrenaline)</button>{{upgrades}}
+        <br>
+        <button ng-click="buyClickUpgrade()" ng-disabled="adrenaline < clickUpgradePrice()">Upgrade click (cost {{clickUpgradePrice()}} adrenaline)</button>{{clickUpgrades}}
+        <hr>
+    </div>
+</body>
+</html>
